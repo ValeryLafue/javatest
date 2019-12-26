@@ -1,0 +1,53 @@
+package exercices;
+
+public class DemoLivre {
+
+	public static void main(String[] args) {
+
+		/*
+		 * titre + auteur + editeur + nbreEx + genre -> Roman, Policier, Voyages,
+		 * Enfants, BD, VIDE
+		 */
+
+		Livre liv1 = new Livre("titre Liv1", "auteur Liv1", "editeur liv1", 3, "Roman");
+		Livre liv2 = new Livre("titre Liv2", "auteur Liv2", "editeur liv2", "BD");
+		Livre liv3 = new Livre("titre Liv3", "auteur Liv3", "editeur liv3", 2, "");
+
+		// Perte d'un livre...
+		liv2.perteExemplaire();
+
+		// Est présent dans la biblio...
+		liv2.estPresent();
+
+		System.out.println("------------------------");
+
+		// Est-il le même ?...
+		Livre liv4 = new Livre("titre Liv1", "auteur Liv1", "editeur liv1", 1, "BD");
+		liv4.equals(liv1);
+
+		System.out.println("------------------------");
+
+		// Changement editeur...
+		liv1.nouvelEditeur("editeur Lafont");
+		
+		// Un nouvel exemplaire ou plusieurs d'un livre...
+				liv1.nouvelExemplaire();
+				liv2.nouveauxNbExemplaire(3);
+
+		System.out.println("------------------------");
+
+		System.out.println(liv1);
+		System.out.println(liv2);
+		System.out.println(liv3);
+		System.out.println(liv4);
+
+		System.out.println("------------------------");
+	
+		
+
+		// Liste livres...
+//		Livre.ListeDesLivres();
+
+	}
+
+}
