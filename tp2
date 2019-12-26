@@ -1,0 +1,31 @@
+package tp2;
+
+public class Lanceur2 {
+
+	public static void main(String[] args) {
+
+		
+		int[] tab = { 3, 1, 6, 12, 2 };
+		int valMax = tab[0];
+		int indMax = 0;
+		int valMin = tab[0];
+		int indMin = 0;
+				
+	
+		
+		for (int i = 0; i < tab.length; i++) {
+			
+			if (tab[i] < valMin) {
+				indMin = i;
+				valMin = tab[i];
+				
+			}
+			if (tab[i] > valMax) {
+				indMax = i;
+				valMax = tab[i];
+
+		}
+	}System.out.printf("le valeur min: %d \t l'indice %d \n", valMin, indMin);
+	System.out.printf("le valeur max: %d \t l'indice %d ", valMax, indMax);
+}
+}
