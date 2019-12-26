@@ -1,0 +1,168 @@
+package exercices;
+
+public class Livre {
+
+	/*
+	 * son titre, le nom de son auteur, son éditeur, le nombre d’exemplaires
+	 * présents dans la bibliothèque, et son genre (littérature française,
+	 * littérature jeunesse, policier . . .) un livre a toujours un titre, un auteur
+	 * et un éditeur qui ne peuvent pas changer
+	 */
+
+	private String titre, auteur, editeur;
+	private int nbreEx = 1;
+	private Genre genre;
+
+	public int getNbreEx() {
+		return nbreEx;
+	}
+
+	public void setNbreEx(int nbreEx) {
+		if (nbreEx >= 0) {
+			this.nbreEx = nbreEx;
+		}
+		this.nbreEx = nbreEx;
+	}
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
+	public String getTitre() {
+		return titre;
+	}
+
+	public String getAuteur() {
+		return auteur;
+	}
+
+	public String getEditeur() {
+		return editeur;
+	}
+
+	
+	public Livre(String titre, String auteur, String editeur, int i) {
+		super();
+		this.titre = titre;
+		this.auteur = auteur;
+		this.editeur = editeur;
+		this.nbreEx = i;
+	}
+	
+	// livre AVEC Nbre ex...
+	public Livre(String titre, String auteur, String editeur, int nbreEx, String genre) {
+		super();
+		this.titre = titre;
+		this.auteur = auteur;
+		this.editeur = editeur;
+		if (nbreEx >= 0) {
+			this.nbreEx = nbreEx;
+		}
+		try {
+			this.genre = Genre.valueOf(genre);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Genre inconnu : non spécifié !");
+			this.genre = Genre.valueOf("VIDE");
+
+		}
+	}
+
+	public Livre() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return (nbreEx + " ex. pour le livre : \n" + titre + " de " + auteur + " aux éditions " + editeur
+				+ "\nau rayon " + genre);
+	}
+
+	// livre sans Nbre ex...
+	public Livre(String titre, String auteur, String editeur, String genre) {
+		super();
+		this.titre = titre;
+		this.auteur = auteur;
+		this.editeur = editeur;
+		try {
+			this.genre = Genre.valueOf(genre);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Genre inconnu : non spécifié !");
+			this.genre = Genre.valueOf("VIDE");
+		}
+	}
+
+	// Création d'un livre, avec toutes les infos...
+//	public static Livre nouvelExemplaire() {
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("\n" + "Quel est le titre du livre ?");
+//		String nvtitre = sc.nextLine();
+//		System.out.println("Quel est l'auteur du livre ?");
+//		String nvauteur = sc.nextLine();
+//		System.out.println("Quel est l'éditeur du livre ?");
+//		String nvediteur = sc.nextLine();
+//		int nvnbreEx = 1;
+//		System.out.println("Quel est le genre du livre ? \n(Roman, Policier, Voyages, Enfants ou BD?)");
+//		String nvgenre = sc.next();
+//		sc.close();
+//
+//		Livre nvLivre = new Livre(nvtitre.toUpperCase(), nvauteur.toUpperCase(), nvediteur.toUpperCase(), nvnbreEx,
+//				nvgenre.toUpperCase());
+//
+//		tabLivre = new String[] {nvLivre.toString()};
+//		System.out.println(nvLivre);
+//		return nvLivre;
+//	}
+
+	
+
+	public void nouveauxNbExemplaire(int nb) {
+		if (0 < nb)
+			nbreEx += nb;
+	}
+
+	public void nouvelExemplaire() {
+		nouveauxNbExemplaire(1);
+	}
+
+	public boolean estPresent() {
+		if (0 < nbreEx) {
+			System.out.println("Est present !");
+			return true;
+		} else {
+			System.out.println("N'est pas present !");
+		}
+		return false;
+	}
+
+	public boolean equals(Livre l) {
+		if (titre.compareToIgnoreCase(l.titre) == 0 && auteur.compareToIgnoreCase(l.auteur) == 0
+				&& editeur.compareToIgnoreCase(l.editeur) == 0) {
+			System.out.println("Il est identique !");
+			return true;
+
+		} else {
+			System.out.println("Il n'est pas identique !");
+		}
+		return false;
+	}
+
+	public int getnbreEx() {
+		return nbreEx;
+	}
+
+	public void perteExemplaire() {
+		if (0 < nbreEx)
+			nbreEx--;
+	}
+
+	public Livre nouvelEditeur(String nvlediteur) {
+		Livre nvLivre = new Livre(titre, auteur, nvlediteur, nbreEx, genre.getGenre());
+		System.out.println(nvLivre);
+		return nvLivre;
+	}
+
+}
